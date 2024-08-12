@@ -58,6 +58,8 @@ app.post("/mock", (req, res) => {
           return generateRandomNumber(Number(val));
         case "string":
           return generateRandomString(Number(val));
+        case "date":
+          return new Date();
         case "boolean":
           return val.toLowerCase() === "true";
         case "object":
