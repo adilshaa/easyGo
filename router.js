@@ -50,9 +50,14 @@ app.post("/mock", (req, res) => {
     if (key === "name") {
       // Return an actual name
       const names = ["John", "Emma", "Oliver", "Ava", "William", "Sophia"];
+      let typesOf = ["array", "object", "number", "boolean", "string"];
       return names[Math.floor(Math.random() * names.length)];
     } else if (typeof value === "string" && value.includes(" ")) {
       const [val, type] = value.split(" ", 2);
+      if (!type && val) {
+        type = val;
+        console.log(type);
+      }
       switch (type.toLowerCase()) {
         case "number":
           return generateRandomNumber(Number(val));
