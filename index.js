@@ -5,6 +5,12 @@ app.use(express.json());
 const path = require("path");
 
 app.set("view engine", "ejs");
+app.use(express.static("public"));
+
+app.use((req, res, next) => {
+  res.locals.layout = "layout";
+  next();
+});
 
 // Set the views directory (optional if it's 'views' in the root)
 app.set("views", path.join(__dirname, "views"));

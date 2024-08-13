@@ -1,12 +1,68 @@
-<!-- views/index.ejs -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-  </head>
-  <body>
-    <h1><%= message %></h1>
-  </body>
-</html>
+<%- include('layouts.ejs')%>
+
+<h2 class="text-2xl font-bold">Welcome to My Website</h2>
+<p>This is the homepage content.</p>
+
+<pre id="json-viewer"></pre>
+
+<script>
+  function syntaxHighlight(json) {
+    json = json
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+    return json.replace(
+      /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,
+      function (match) {
+        var cls = "number";
+        if (/^"/.test(match)) {
+          if (/:$/.test(match)) {
+            cls = "key";
+          } else {
+            cls = "string";
+          }
+        } else if (/true|false/.test(match)) {
+          cls = "boolean";
+        } else if (/null/.test(match)) {
+          cls = "null";
+        }
+        return '<span class="' + cls + '">' + match + "</span>";
+      }
+    );
+  }
+
+  var obj = {
+    name: "10 string",
+    disc: "200 string",
+    isValid: "true boolean",
+    dataObject: { newKey: "10 string", name: "20 number" },
+    dataArray: [{ name: "10 string" }],
+    invalidType: "123 string",
+    missingType: "500",
+    arrayOfObjects: "[1,2,3] array",
+    // arrayWithCount: "5 arraywithcount",
+    // objectsWithCount: "3 user objectwithcount",
+
+    nestedArray: [
+      "3 number",
+      "false boolean",
+      { deep: ["4 number", "invalid type"] },
+      [
+        "5 string",
+        {
+          deeper: '{"nested":"yes"} object',
+        },
+      ],
+    ],
+    nestedObject: {
+      level1: "15 number",
+      level2: {
+        level3: "false boolean",
+      },
+    },
+  };
+  var str = JSON.stringify(obj, undefined, 4);
+
+  let newColor = syntaxHighlight(str);
+  document.getElementById("json-viewer").innerHTML = newColor;
+</script>
