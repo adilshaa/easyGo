@@ -7,8 +7,8 @@ app.get("/", async (req, res) => {
   console.log("getting requrest");
   let salt = 10;
   const pass = await bcrypt.hash("Adilshaa", salt);
-
-  res.json({ stats: " success", data: pass });
+  res.render("index", { title: "My EJS Page", message: "Hello, World!" });
+  // res.json({ stats: " success", data: pass });
 });
 
 app.post("/mock", (req, res) => {
