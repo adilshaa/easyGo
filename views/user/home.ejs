@@ -1,0 +1,104 @@
+<%- include('../layouts.ejs')%>
+<style>
+  .animated-text {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: animate-text 1s forwards;
+  }
+
+  @keyframes animate-text {
+    0% {
+      opacity: 0;
+      transform: translateX(-500%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .word:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .word:nth-child(2) {
+    animation-delay: 0.05s;
+  }
+
+  .word:nth-child(3) {
+    animation-delay: 0.02s;
+  }
+
+  .word:nth-child(4) {
+    animation-delay: 0.03s;
+  }
+
+  .word:nth-child(5) {
+    animation-delay: 0.04s;
+  }
+
+  .word:nth-child(6) {
+    animation-delay: 0.05s;
+  }
+</style>
+<section class="w-100 px-20 h-screen bg-neutral-900 backdrop-blur-sm">
+  <div
+    class="flex flex-col items-center w-100 h-screen gap-10"
+    style="background-image: url('../images/shade-bg.png')"
+  >
+    <div class="w-100 flex h-20 items-center justify-center md:h-80">
+      <!-- <h1 class="font-bold text-3xl text-white">Welcom to easyGo</h1> -->
+
+      <div class="animated-text font-bold text-3xl text-white md:text-6xl">
+        <span class="word">Easy&nbsp;</span>
+        <span class="word">Go&nbsp;</span>
+        <span class="word">with&nbsp;</span>
+        <span class="word">your&nbsp;</span>
+        <span class="word">tasks&nbsp;</span>
+        <!-- <span class="word"></span> -->
+      </div>
+    </div>
+    <div class="flex flex-col gap-10 md:flex-row justify-center">
+      <div
+        class="flex flex-col p-5 h-56 w-100 rounded-2xl bg-neutral-700/50 gap-3 hover:bg-neutral-700/40 md:w-2/5"
+      >
+        <h1 class="font-bold text-lg text-white">Heading One</h1>
+        <h1 class="font-light text-sx text-white">
+          Manage your tasks and keep track of your progress with our easy-to-use
+          task management system.
+        </h1>
+
+        <div class="w-100 flex justify-end">
+          <button
+            class="w-20 h-10 bg-white rounded-xl font-bold text-neutral-700"
+          >
+            Start
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col p-5 h-56 w-80 rounded-2xl bg-neutral-700/50 gap-3 hover:bg-neutral-700/40 md:w-2/5"
+      >
+        <h1 class="font-bold text-lg text-white">Heading One</h1>
+        <h1 class="font-light text-sx text-white">
+          Manage your tasks and keep track of your progress with our easy-to-use
+          task management system.
+        </h1>
+        <div class="w-100 flex justify-end">
+          <button
+            class="w-20 h-10 bg-white rounded-xl font-bold text-neutral-700"
+          >
+            Start
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

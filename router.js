@@ -7,7 +7,17 @@ app.get("/", async (req, res) => {
   console.log("getting requrest");
   let salt = 10;
   const pass = await bcrypt.hash("Adilshaa", salt);
-  res.render("index", { title: "My EJS Page", message: "Hello, World!" });
+  res.render("user/home", { title: "My EJS Page", message: "Hello, World!" });
+  // res.json({ stats: " success", data: pass });
+});
+app.get("/mock", async (req, res) => {
+  console.log("getting requrest");
+  let salt = 10;
+  const pass = await bcrypt.hash("Adilshaa", salt);
+  res.render("user/mockData", {
+    title: "My EJS Page",
+    message: "Hello, World!",
+  });
   // res.json({ stats: " success", data: pass });
 });
 

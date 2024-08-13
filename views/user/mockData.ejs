@@ -1,0 +1,130 @@
+<%- include('../layouts.ejs')%>
+
+<section
+  class="w-100 h-screen bg-neutral-900 backdrop-blur-sm md:px-20"
+  style="background-image: url('../images/shade-bg.png')"
+>
+  <div class="flex flex-col w-100 gap-10">
+    <div class="flex flex-col p-5 md:flex-row gap-10">
+      <div
+        class="flex border bg-neutral-700/10 pl-5 pt-5 border-purple-700 rounded-2xl"
+      >
+        <div class="w-full md:max-w-2xl">
+          <div class="w-full flex flex-row justify-between">
+            <p class="font-bold text-white text-lg">Data Model</p>
+
+            <div
+              class="w-10 h-10 rounded-md border border-purple-700 mx-5 flex justify-center items-center bg-neutral-700/10 hover:bg-neutral-700/40"
+            >
+              <button id="copy-btn">
+                <svg
+                  width="31"
+                  height="30"
+                  viewBox="0 0 51 57"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M32.377 11.5781H9.86532C8.87825 11.5805 7.93209 12.0191 7.23338 12.7984C6.53467 13.5776 6.14015 14.6342 6.13594 15.7373V51.0417C6.13594 52.148 6.5286 53.2091 7.22776 53.9922C7.92693 54.7753 8.87549 55.2164 9.86532 55.2188H32.377C33.3682 55.2188 34.3188 54.7787 35.0197 53.9953C35.7206 53.212 36.1144 52.1495 36.1144 51.0417V15.7373C36.1102 14.6326 35.7145 13.5747 35.0141 12.7952C34.3137 12.0157 33.3655 11.5781 32.377 11.5781ZM34.5206 51.0595C34.5164 51.6918 34.2887 52.2966 33.8872 52.7421C33.4856 53.1876 32.9428 53.4375 32.377 53.4375H9.86532C9.29818 53.4351 8.75499 53.1817 8.35471 52.7327C7.95443 52.2836 7.72969 51.6756 7.72969 51.0417V15.7373C7.73388 15.1066 7.96048 14.5031 8.36031 14.0579C8.76014 13.6127 9.30093 13.3617 9.86532 13.3594H32.377C32.9456 13.3594 33.4908 13.6118 33.8928 14.0611C34.2948 14.5104 34.5206 15.1198 34.5206 15.7552V51.0595Z"
+                    fill="#7E22CE"
+                  />
+                  <path
+                    d="M41.2303 1.78125H18.5353C17.5687 1.78125 16.6416 2.20978 15.9574 2.97283C15.2732 3.73588 14.8877 4.77112 14.8856 5.85141V9.01312C14.8856 9.24933 14.9696 9.47587 15.119 9.64289C15.2685 9.80992 15.4712 9.90375 15.6825 9.90375C15.8939 9.90375 16.0965 9.80992 16.246 9.64289C16.3954 9.47587 16.4794 9.24933 16.4794 9.01312V5.85141C16.4815 5.24353 16.699 4.66136 17.0844 4.23236C17.4697 3.80336 17.9914 3.5625 18.5353 3.5625H41.2303C41.7721 3.56486 42.291 3.80705 42.6733 4.23605C43.0557 4.66504 43.2703 5.24589 43.2703 5.85141V41.3606C43.2662 41.9639 43.0499 42.5411 42.6682 42.9677C42.2865 43.3943 41.7701 43.636 41.2303 43.6406H38.6484C38.4371 43.6406 38.2344 43.7345 38.085 43.9015C37.9355 44.0685 37.8516 44.295 37.8516 44.5312C37.8516 44.7675 37.9355 44.994 38.085 45.161C38.2344 45.328 38.4371 45.4219 38.6484 45.4219H41.2303C42.1969 45.4195 43.1232 44.9887 43.8059 44.224C44.4886 43.4593 44.872 42.4231 44.872 41.3428V5.85141C44.872 4.77193 44.4884 3.73667 43.8054 2.97337C43.1225 2.21007 42.1962 1.78125 41.2303 1.78125Z"
+                    fill="#7E22CE"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="w-100 overflow-x-auto md:max-w-2xl" style="height: 84vh">
+            <pre id="json-viewer"></pre>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex border w-1/2 bg-neutral-700/10 pl-5 pt-5 border-purple-700 rounded-2xl"
+      >
+        <div class="w-full text-white">
+          <div class="flex flex-col w-full">
+            <p class="font-bold text-white text-lg">Integration</p>
+
+            <div
+              class="flex flex-row w-full justify-start gap-2 items-center pt-2"
+            >
+              <svg
+                width="28"
+                height="20"
+                viewBox="0 0 28 23"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M0.1175 11.543C0.1175 11.112 0.291998 10.6987 0.602605 10.3939C0.913212 10.0892 2.46074 11.2829 2.9 11.2829L16.8125 9.91795L13.8511 2.94345C13.5401 2.63832 13.3654 2.22447 13.3654 1.79295C13.3654 1.36143 13.5401 0.947582 13.8511 0.642451C14.1621 0.337319 14.5839 0.165898 15.0238 0.165898C15.4636 0.165898 15.8854 0.337319 16.1964 0.642451L26.8825 11.2829L27.015 11.4129L27.1475 11.5429L26.8825 11.8029L26.6175 12.0629L16.1964 22.4435C15.8854 22.7486 15.4636 22.92 15.0238 22.92C14.5839 22.92 14.1621 22.7486 13.8511 22.4435C13.5401 22.1383 13.3654 21.7245 13.3654 21.293C13.3654 20.8614 13.5401 20.4476 13.8511 20.1425L16.8125 13.168L2.9 11.74C2.46074 11.74 0.913212 12.9967 0.602605 12.692C0.291998 12.3873 0.1175 11.9739 0.1175 11.543Z"
+                  fill="#7E22CE"
+                  fill-opacity="0.89"
+                />
+              </svg>
+              <p>React</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var obj = {
+    name: "10 string",
+    disc: "200 string",
+    isValid: "true boolean",
+    dataObject: { newKey: "10 string", name: "20 number" },
+    dataArray: [{ name: "10 string" }],
+    invalidType: "123 string",
+    missingType: "500",
+    arrayOfObjects: "[1,2,3] array",
+    // arrayWithCount: "5 arraywithcount",
+    // objectsWithCount: "3 user objectwithcount",
+
+    nestedArray: [
+      "3 number",
+      "false boolean",
+      { deep: ["4 number", "invalid type"] },
+      [
+        "5 string",
+        {
+          deeper: '{"nested":"yes"} object',
+        },
+      ],
+    ],
+    nestedObject: {
+      level1: "15 number",
+      level2: {
+        level3: "false boolean",
+      },
+    },
+  };
+
+  fetchData(function (response) {
+    let newColor = syntaxHighlight(
+      JSON.stringify(response?.data, undefined, 4)
+    );
+    console.log(response);
+
+    document.getElementById("json-viewer").innerHTML = newColor;
+  });
+</script>
+
+<script>
+  // ... (rest of your code remains the same)
+
+  document.getElementById("copy-btn").addEventListener("click", function () {
+    const jsonViewer = document.getElementById("json-viewer");
+    const jsonText = jsonViewer.innerText;
+    navigator.clipboard.writeText(jsonText).then(function () {
+      console.log("JSON copied to clipboard");
+    });
+  });
+</script>
